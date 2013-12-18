@@ -46,6 +46,7 @@
     <Compile Include="MinecraftSession\SessionInfoYggdrasil.cs" />
     <Compile Include="MinecraftStatus.cs" />
     <Compile Include="MinecraftVersion\MinecraftVersion.cs" />
+    <Compile Include="MinecraftVersion\ProcessArguments.cs" />
     <Compile Include="MinecraftVersion\ReleaseType.cs" />
     <Compile Include="MinecraftVersion\TinyMinecraftVersion.cs" />
   </ItemGroup>

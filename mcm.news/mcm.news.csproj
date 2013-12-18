@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A736307C-B038-49FB-84C2-A83AAC06DFD8}</ProjectGuid>
+    <ProjectGuid>{AF89E511-70B9-404F-AC1C-299A1D50BAE7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MCM.News</RootNamespace>
+    <RootNamespace>mcm.news</RootNamespace>
     <AssemblyName>mcm.news</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProductVersion>10.0.0</ProductVersion>
