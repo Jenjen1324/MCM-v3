@@ -1,4 +1,4 @@
-MCM-v3
+Minecraft-Manager (Remake #3)
 ======
 
 This is a Minecraft Launcher that tries to put in as much flexibilty and functionality as possible
