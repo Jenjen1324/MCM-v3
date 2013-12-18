@@ -31,9 +31,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mcm.core">
-      <HintPath>..\mcm.core\bin\Debug\mcm.core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,7 +50,6 @@
     <Compile Include="MinecraftVersion\ProcessArguments.cs" />
     <Compile Include="MinecraftVersion\ReleaseType.cs" />
     <Compile Include="MinecraftVersion\TinyMinecraftVersion.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -64,4 +60,10 @@
   </Target>
   -->
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\mcm.core\mcm.core.csproj">
+      <Project>{6CCEAF72-37AA-4E13-BE72-133FE406B12B}</Project>
+      <Name>mcm.core</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
