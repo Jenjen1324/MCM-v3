@@ -47,8 +47,10 @@
     <Compile Include="MinecraftAssets\MinecraftAssetManager.cs" />
     <Compile Include="MinecraftSession\SessionInfo.cs" />
     <Compile Include="MinecraftSession\SessionInfoYggdrasil.cs" />
+    <Compile Include="MinecraftStatus.cs" />
     <Compile Include="MinecraftVersion\MinecraftVersion.cs" />
     <Compile Include="MinecraftVersion\ReleaseType.cs" />
+    <Compile Include="MinecraftVersion\TinyMinecraftVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
