@@ -31,4 +31,18 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Login API\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Login API\LoginInfo.cs" />
+    <Compile Include="Login API\EncryptedPassword.cs" />
+    <Compile Include="Login API\EncryptKey.cs" />
+  </ItemGroup>
 </Project>
