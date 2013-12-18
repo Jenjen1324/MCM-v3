@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="MinecraftAssets\MinecraftAsset.cs" />
     <Compile Include="MinecraftAssets\MinecraftAssetManager.cs" />
+    <Compile Include="MinecraftLibraries\Library.cs" />
     <Compile Include="MinecraftSession\SessionInfo.cs" />
     <Compile Include="MinecraftSession\SessionInfoYggdrasil.cs" />
     <Compile Include="MinecraftStatus.cs" />
