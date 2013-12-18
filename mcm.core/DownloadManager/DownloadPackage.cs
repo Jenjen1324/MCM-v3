@@ -14,14 +14,26 @@ namespace MCM.Core.DownloadManager
         /// <summary>
         /// The Downloads to be downloaded
         /// </summary>
-        public List<Download> files;
+        private List<Download> files;
 
         /// <summary>
-        /// Downloads
+        /// Calls when a file has finished downloading
         /// </summary>
-        public void Download()
+        public Action<Download> finishedFile;
+
+        /// <summary>
+        /// Downloads all the files in the package
+        /// </summary>
+        public override void DoDownload()
         {
-            throw new NotImplementedException();
+            foreach(Download dl in files)
+            {
+                dl.DoDownload();
+                dl.WaitForComplete();
+            }
+
+            this.complete = true;
+            this.Downloaded(this);
         }
     }
 }

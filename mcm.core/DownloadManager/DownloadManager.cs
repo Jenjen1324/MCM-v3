@@ -9,24 +9,61 @@ namespace MCM.Core.DownloadManager
     /// <summary>
     /// The Manager that starts the downloads
     /// </summary>
-    public class DownloadManager
+	public static class DownloadManager
     {
+		/// <summary>
+		/// The list of scheduled downloads
+		/// </summary>
+		private static List<Download> downloads = new List<Download>();
+
+		private static bool isDownloading;
+
         /// <summary>
-        /// Schedules a single file to be downloaded
+        /// Schedules a download to be downloaded
         /// </summary>
         /// <param name="dl">The download to be downloaded</param>
-        public void ScheduleDownload(Download dl)
+		public static void ScheduleDownload(Download dl)
         {
-            throw new NotImplementedException();
+			downloads.Add (dl);
+            Download();
         }
 
         /// <summary>
-        /// Schedules the download of all downloads in the Package
+        /// Schedules a single file to be downloaded
         /// </summary>
-        /// <param name="dl">The Package to be downloaded</param>
-        public void ScheduleDownload(DownloadPackage dl)
+        /// <param name="name">The name</param>
+        /// <param name="url">The URL to download from</param>
+        /// <param name="MCRequire">Wheter Minecraft requires this before starting</param>
+        public static void ScheduleDownload(string name, string url, bool MCRequire)
         {
-            throw new NotImplementedException();
+            Download dl = new Download()
+            {
+                name = name,
+                url = url,
+                MCRequire = MCRequire
+            };
+
+            ScheduleDownload(dl);
         }
+
+        /// <summary>
+        /// Downloads all the scheduled downloads
+        /// </summary>
+		private static void Download()
+		{
+			if (!isDownloading) {
+				foreach (Download dl in downloads) {
+					if (!dl.complete) {
+						isDownloading = true;
+                        dl.Downloaded += delegate 
+                        {
+                            isDownloading = false;
+                            Download();
+                        };
+                        Download();
+					}
+				}
+			}
+		}
     }
 }
