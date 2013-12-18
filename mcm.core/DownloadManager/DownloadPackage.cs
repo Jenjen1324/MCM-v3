@@ -11,16 +11,17 @@ namespace MCM.Core.DownloadManager
     /// </summary>
     public class DownloadPackage : Download
     {
-
-
         /// <summary>
-        /// The Downloads the be downloaded
+        /// The Downloads to be downloaded
         /// </summary>
         public List<Download> files;
 
         /// <summary>
         /// Downloads
         /// </summary>
-        public void Download();
+        public void Download()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

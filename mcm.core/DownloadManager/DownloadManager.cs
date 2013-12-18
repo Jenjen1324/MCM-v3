@@ -15,12 +15,18 @@ namespace MCM.Core.DownloadManager
         /// Schedules a single file to be downloaded
         /// </summary>
         /// <param name="dl">The download to be downloaded</param>
-        public void ScheduleDownload(Download dl);
+        public void ScheduleDownload(Download dl)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Schedules the download of all downloads in the Package
         /// </summary>
         /// <param name="dl">The Package to be downloaded</param>
-        public void ScheduleDownload(DownloadPackage dl);
+        public void ScheduleDownload(DownloadPackage dl)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
