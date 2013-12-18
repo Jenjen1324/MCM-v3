@@ -6,7 +6,7 @@ namespace mcm.core
 	/// Class for storing Login info for minecraft and mcm profiles.
 	/// </summary>
 	public class LoginInfo
-	{
+	{ 
 		private string name;
 		private EncryptedPassword password;
 
