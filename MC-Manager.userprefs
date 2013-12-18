@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="mcm.core\DownloadManager\Download.cs">
+    <Files>
+      <File FileName="mcm.core\DownloadManager\DownloadManager.cs" Line="45" Column="28" />
+      <File FileName="mcm.core\DownloadManager\Download.cs" Line="28" Column="1" />
+      <File FileName="mcm.core\DownloadManager\DownloadPackage.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
