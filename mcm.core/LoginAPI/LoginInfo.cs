@@ -1,6 +1,6 @@
 using System;
 
-namespace mcm.core
+namespace MCM.Core.LoginAPI
 {
 	/// <summary>
 	/// Class for storing Login info for minecraft and mcm profiles.

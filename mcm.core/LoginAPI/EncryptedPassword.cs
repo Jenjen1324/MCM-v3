@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Diagnostics.Contracts;
 
-namespace mcm.core
+namespace MCM.Core.LoginAPI
 {
 	/// <summary>
 	/// Encrypted password.

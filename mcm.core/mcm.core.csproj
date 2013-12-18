@@ -34,6 +34,9 @@
     <Compile Include="DownloadManager\Download.cs" />
     <Compile Include="DownloadManager\DownloadManager.cs" />
     <Compile Include="DownloadManager\DownloadPackage.cs" />
+    <Compile Include="LoginAPI\LoginInfo.cs" />
+    <Compile Include="LoginAPI\EncryptedPassword.cs" />
+    <Compile Include="LoginAPI\EncryptKey.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -43,11 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login API\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Login API\LoginInfo.cs" />
-    <Compile Include="Login API\EncryptedPassword.cs" />
-    <Compile Include="Login API\EncryptKey.cs" />
+    <Folder Include="LoginAPI\" />
   </ItemGroup>
 </Project>
