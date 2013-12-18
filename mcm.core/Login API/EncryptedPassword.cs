@@ -77,7 +77,7 @@ namespace mcm.core
 
 				//Create crypto streams
 				using (MemoryStream ms = new MemoryStream(this.passwordData))
-				using (CryptoStream cryptoStream = new CryptoStream(ms, Aes, CryptoStreamMode.Read))
+				using (CryptoStream cryptoStream = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Read))
 				using (StreamReader cryptoReader = new StreamReader(cryptoStream)) {
 
 					//Read decrypted data

@@ -30,9 +30,11 @@ namespace mcm.core
 			using(RijndaelManaged rj = new RijndaelManaged())
 			{
 				//Generate key data
-				key.data = rj.GenerateKey();
-				key.dataIV = rj.GenerateIV();
+				rj.GenerateKey();
+				rj.GenerateIV();
 
+				key.data = rj.Key;
+				key.dataIV = rj.IV;
 				//dispose encryptor
 			}
 			//Return key
@@ -72,7 +74,7 @@ namespace mcm.core
 
 			//Init stream and main vars
 			MemoryStream ms = new MemoryStream(Data);
-			BinaryReader br = new BinaryReader();
+			BinaryReader br = new BinaryReader(ms);
 			byte[] data;
 			byte[] dataIV;
 
