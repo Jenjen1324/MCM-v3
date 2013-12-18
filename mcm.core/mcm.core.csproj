@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6CCEAF72-37AA-4E13-BE72-133FE406B12B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>mcm.core</RootNamespace>
+    <RootNamespace>MCM.Core</RootNamespace>
     <AssemblyName>mcm.core</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -30,5 +30,10 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DownloadManager\Download.cs" />
+    <Compile Include="DownloadManager\DownloadManager.cs" />
+    <Compile Include="DownloadManager\DownloadPackage.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
