@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm.core", "mcm.core\mcm.core.csproj", "{6CCEAF72-37AA-4E13-BE72-133FE406B12B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm.plugins", "mcm.plugins\mcm.plugins.csproj", "{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm.mc", "mcm.mc\mcm.mc.csproj", "{3AA950AF-D2A6-45C0-B29C-959307957846}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AA950AF-D2A6-45C0-B29C-959307957846}.Debug|x86.ActiveCfg = Debug|x86
+		{3AA950AF-D2A6-45C0-B29C-959307957846}.Debug|x86.Build.0 = Debug|x86
+		{3AA950AF-D2A6-45C0-B29C-959307957846}.Release|x86.ActiveCfg = Release|x86
+		{3AA950AF-D2A6-45C0-B29C-959307957846}.Release|x86.Build.0 = Release|x86
+		{6CCEAF72-37AA-4E13-BE72-133FE406B12B}.Debug|x86.ActiveCfg = Debug|x86
+		{6CCEAF72-37AA-4E13-BE72-133FE406B12B}.Debug|x86.Build.0 = Debug|x86
+		{6CCEAF72-37AA-4E13-BE72-133FE406B12B}.Release|x86.ActiveCfg = Release|x86
+		{6CCEAF72-37AA-4E13-BE72-133FE406B12B}.Release|x86.Build.0 = Release|x86
+		{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}.Debug|x86.ActiveCfg = Debug|x86
+		{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}.Debug|x86.Build.0 = Debug|x86
+		{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}.Release|x86.ActiveCfg = Release|x86
+		{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = mcm.core\mcm.core.csproj
+	EndGlobalSection
+EndGlobal
