@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3AA950AF-D2A6-45C0-B29C-959307957846}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>mcm.mc</RootNamespace>
+    <RootNamespace>MCM.MC</RootNamespace>
     <AssemblyName>mcm.mc</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -30,5 +30,34 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mcm.core">
+      <HintPath>..\mcm.core\bin\Debug\mcm.core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MinecraftAssets\MinecraftAsset.cs" />
+    <Compile Include="MinecraftAssets\MinecraftAssetManager.cs" />
+    <Compile Include="MinecraftSession\SessionInfo.cs" />
+    <Compile Include="MinecraftSession\SessionInfoYggdrasil.cs" />
+    <Compile Include="MinecraftVersion\MinecraftVersion.cs" />
+    <Compile Include="MinecraftVersion\ReleaseType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

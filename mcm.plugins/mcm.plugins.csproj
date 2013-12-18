@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C86FF2C7-BA9D-4597-91AF-7E24C0A78987}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>mcm.plugins</RootNamespace>
+    <RootNamespace>MCM.Plugins</RootNamespace>
     <AssemblyName>mcm.plugins</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
