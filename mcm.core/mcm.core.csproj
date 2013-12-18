@@ -37,6 +37,10 @@
     <Compile Include="LoginAPI\LoginInfo.cs" />
     <Compile Include="LoginAPI\EncryptedPassword.cs" />
     <Compile Include="LoginAPI\EncryptKey.cs" />
+    <Compile Include="SettingsAPI\Setting.cs" />
+    <Compile Include="SettingsAPI\SettingGroup.cs" />
+    <Compile Include="SettingsAPI\Settings.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -47,5 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LoginAPI\" />
+    <Folder Include="SettingsAPI\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>
