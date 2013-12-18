@@ -1,5 +1,5 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm-wpf", "mcm-wpf\mcm-wpf.csproj", "{E1F5BF83-EBBC-49C2-98F3-E875C1F076B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm-gui", "mcm-gui\mcm-gui.csproj", "{9CE4C6BB-33C7-4D6E-B5FF-2EB101E645D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mcm.news", "mcm.news\mcm.news.csproj", "{A736307C-B038-49FB-84C2-A83AAC06DFD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9CE4C6BB-33C7-4D6E-B5FF-2EB101E645D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CE4C6BB-33C7-4D6E-B5FF-2EB101E645D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CE4C6BB-33C7-4D6E-B5FF-2EB101E645D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A736307C-B038-49FB-84C2-A83AAC06DFD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A736307C-B038-49FB-84C2-A83AAC06DFD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A736307C-B038-49FB-84C2-A83AAC06DFD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A736307C-B038-49FB-84C2-A83AAC06DFD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
