@@ -46,8 +46,7 @@ namespace MCM.Core.Settings
 			//Else create one and add it
 			else {
 				//Create group
-				SettingGroup s = new SettingGroup();
-				s.Name = Name;
+				SettingGroup s = new SettingGroup(Name);
 				this.Add(s);
 				return s;
 			}

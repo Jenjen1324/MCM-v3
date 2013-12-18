@@ -12,8 +12,9 @@ namespace MCM.Core.Settings
 	{
 		string name;
 
-		public SettingGroup () : base()
+		public SettingGroup (string Name) : base()
 		{
+			this.name = Name;
 		}
 
 		/// <summary>
@@ -73,7 +74,7 @@ namespace MCM.Core.Settings
 		/// </param>
 		public void GenerateXML (StringBuilder xmlBuilder)
 		{
-			xmlBuilder.AppendLine("<group name=\"{0}\">".Format(name));
+			xmlBuilder.AppendLine("<group name=\"{0}\">".format(name));
 			this.ForEach((s) => s.GenerateXML(xmlBuilder));
 			xmlBuilder.AppendLine("</group>");
 		}

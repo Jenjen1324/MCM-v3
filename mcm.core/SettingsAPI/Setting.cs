@@ -52,7 +52,7 @@ namespace MCM.Core.Settings
 		/// </param>
 		public void GenerateXML(StringBuilder xmlBuilder)
 		{
-			xmlBuilder.AppendLine("<setting name=\"{0}\" type=\"{2}\">{1}</setting>".Format(this.key,this.value.ToString(),this.value.GetType().FullName));
+			xmlBuilder.AppendLine("<setting name=\"{0}\" type=\"{2}\">{1}</setting>".format(this.key,this.value.ToString(),this.value.GetType().FullName));
 		}
 
 	}
