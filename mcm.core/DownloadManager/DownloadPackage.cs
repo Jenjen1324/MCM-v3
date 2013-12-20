@@ -9,31 +9,33 @@ namespace MCM.Core.DownloadManager
     /// <summary>
     /// A Package that contains multiple downloads but are for one cause
     /// </summary>
-    public class DownloadPackage : Download
+    public class DownloadPackage : DownloadJob
     {
         /// <summary>
         /// The Downloads to be downloaded
         /// </summary>
-        private List<Download> files;
+        private List<DownloadJob> jobs;
 
         /// <summary>
         /// Calls when a file has finished downloading
         /// </summary>
-        public Action<Download> finishedFile;
+        public Action<Download> FileFinished;
 
         /// <summary>
         /// Downloads all the files in the package
         /// </summary>
         public override void DoDownload()
         {
-            foreach(Download dl in files)
+            foreach(DownloadJob dl in jobs)
             {
-                dl.DoDownload();
-                dl.WaitForComplete();
+				dl.DownloadComplete += delegate {
+					FileFinished(dl);
+				};
+                dl.StartDownload();
             }
 
-            this.complete = true;
-            this.Downloaded(this);
+            this.Complete = true;
+            this.DownloadComplete(this);
         }
     }
 }

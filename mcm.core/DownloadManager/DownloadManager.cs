@@ -14,7 +14,7 @@ namespace MCM.Core.DownloadManager
 		/// <summary>
 		/// The list of scheduled downloads
 		/// </summary>
-		private static List<Download> downloads = new List<Download>();
+		private static Stack<DownloadJob> downloads = new Stack<DownloadJob>();
 
 		private static bool isDownloading;
 
@@ -24,7 +24,7 @@ namespace MCM.Core.DownloadManager
         /// <param name="dl">The download to be downloaded</param>
 		public static void ScheduleDownload(Download dl)
         {
-			downloads.Add (dl);
+			downloads.Push (dl);
             Download();
         }
 
@@ -46,23 +46,31 @@ namespace MCM.Core.DownloadManager
             ScheduleDownload(dl);
         }
 
+		/// <summary>
+		/// Downloads the next scheduled DownloadJob
+		/// </summary>
+		public static void DownloadNext ()
+		{
+			DownloadJob next = downloads.Pop ();
+			next.DownloadComplete += JobComplete;
+			WaitForAll += next.GetWaitForCompleteDelegate();
+			DownloadProgressChanged += next.ProgressChanged;
+			next.StartDownload();
+		}
+
+		public static Func<bool> WaitForAll = delegate {};
+
+		public static Action<DownloadJob> JobComplete = delegate {};
+
+		public static Action<DownloadJob,int> DownloadProgressChanged = delegate {};
+
         /// <summary>
         /// Downloads all the scheduled downloads
         /// </summary>
 		private static void Download()
 		{
-			if (!isDownloading) {
-				foreach (Download dl in downloads) {
-					if (!dl.complete) {
-						isDownloading = true;
-                        dl.Downloaded += delegate 
-                        {
-                            isDownloading = false;
-                            Download();
-                        };
-                        Download();
-					}
-				}
+			while (downloads.Count > 0) {
+				DownloadNext();
 			}
 		}
     }
