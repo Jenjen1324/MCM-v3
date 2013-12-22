@@ -16,16 +16,18 @@ namespace MCM.Core.DownloadManager
 		/// </summary>
 		private static Stack<DownloadJob> downloads = new Stack<DownloadJob>();
 
-		private static bool isDownloading;
+		private static List<DownloadJob> downloading = new List<DownloadJob>();
 
         /// <summary>
         /// Schedules a download to be downloaded
         /// </summary>
         /// <param name="dl">The download to be downloaded</param>
-		public static void ScheduleDownload(Download dl)
+		public static void ScheduleDownload(DownloadJob dl)
         {
-			downloads.Push (dl);
-            Download();
+			lock (downloads) {
+				downloads.Push (dl);
+				StartNextJob();
+			}
         }
 
         /// <summary>
@@ -34,31 +36,39 @@ namespace MCM.Core.DownloadManager
         /// <param name="name">The name</param>
         /// <param name="url">The URL to download from</param>
         /// <param name="MCRequire">Wheter Minecraft requires this before starting</param>
-        public static void ScheduleDownload(string name, string url, bool MCRequire)
+		public static void ScheduleDownload(string Name, string Url, string Description, Action<DownloadJob> finished = null)
         {
-            Download dl = new Download()
-            {
-                name = name,
-                url = url,
-                MCRequire = MCRequire
-            };
-
+			DownloadJob dl = new DownloadJob(Url,Name,Description);
+			if(finished == null) dl.DownloadComplete += finished;
             ScheduleDownload(dl);
+			return dl;
         }
 
 		/// <summary>
 		/// Downloads the next scheduled DownloadJob
 		/// </summary>
-		public static void DownloadNext ()
+		public static void StartNextJob ()
 		{
-			DownloadJob next = downloads.Pop ();
-			next.DownloadComplete += JobComplete;
-			WaitForAll += next.GetWaitForCompleteDelegate();
-			DownloadProgressChanged += next.ProgressChanged;
-			next.StartDownload();
+			lock (downloading)
+			lock (downloads) {
+				DownloadJob next = downloads.Pop ();
+				next.DownloadComplete += JobComplete;
+				next.DownloadComplete += (d) => {
+					lock (downloading) {
+						downloading.Remove(d);
+					}
+				};
+				WaitForAll += next.GetWaitForCompleteDelegate ();
+				DownloadProgressChanged += next.ProgressChanged;
+				downloading.Add(next);
+				next.StartDownload ();
+				DownloadStarted(next);
+			}
 		}
 
 		public static Func<bool> WaitForAll = delegate {};
+
+		public static Action<DownloadJob> DownloadStarted = delegate {};
 
 		public static Action<DownloadJob> JobComplete = delegate {};
 
@@ -67,10 +77,13 @@ namespace MCM.Core.DownloadManager
         /// <summary>
         /// Downloads all the scheduled downloads
         /// </summary>
-		private static void Download()
+		[Obsolete("All downloads are downloaded when scheduled, this should never be needed")]
+		private static void Download ()
 		{
-			while (downloads.Count > 0) {
-				DownloadNext();
+			lock (downloads) {
+				while (downloads.Count > 0) {
+					StartNextJob ();
+				}
 			}
 		}
     }

@@ -19,17 +19,29 @@ namespace MCM.Core.DownloadManager
         /// <summary>
         /// Calls when a file has finished downloading
         /// </summary>
-        public Action<Download> FileFinished;
+        public Action<DownloadJob> FileFinished;
+
+		/// <summary>
+		/// Updates the progress.
+		/// </summary>
+		private void UpdateProgress ()
+		{
+			int size = jobs.Count;
+			int finished = (from dlj in jobs select (dlj.Complete ? 1 : 0)).Sum ();
+			int n = finished / size * 100;
+			ProgressChanged (this, n);
+		}
 
         /// <summary>
         /// Downloads all the files in the package
         /// </summary>
-        public override void DoDownload()
+        public override void StartDownload()
         {
             foreach(DownloadJob dl in jobs)
             {
 				dl.DownloadComplete += delegate {
 					FileFinished(dl);
+					UpdateProgress();
 				};
                 dl.StartDownload();
             }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Threading;
+using MCM.Core.Utils;
 
 namespace MCM.Core.DownloadManager
 {
@@ -83,13 +84,9 @@ namespace MCM.Core.DownloadManager
 			this.Complete = false;
 			this.Data = null;
 
-			DownloadComplete = delegate {
-			
-			};
+			DownloadComplete = delegate {};
 
-			ProgressChanged = delegate {
-			
-			};
+			ProgressChanged = delegate {};
 		}
 
 		/// <summary>
@@ -141,6 +138,7 @@ namespace MCM.Core.DownloadManager
 				this.Success = true;
 				this.Complete = true;
 				DownloadComplete(this);
+				Logger.Write("Download Complete: {0} ({1})".format(this.Name,this.Description));
 			};
 			try {
 				webClient.DownloadDataAsync (new Uri (this.Url));
@@ -148,6 +146,7 @@ namespace MCM.Core.DownloadManager
 				this.Success = false;
 				this.Complete = true;
 				this.Error = new WebException("Could not download file: " + Url, ex);
+				Logger.Write(this.Error.ToString());
 			}
 		}
 
@@ -177,6 +176,7 @@ namespace MCM.Core.DownloadManager
 		}
 	}
 
+	/*
     public class Download
     {
         /// <summary>
@@ -261,4 +261,5 @@ namespace MCM.Core.DownloadManager
             ProgressUpdated(e.ProgressPercentage);
         }
     }
+    */
 }
