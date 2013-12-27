@@ -1,30 +1,31 @@
 using System;
 using System.IO;
 
-namespace MCM.Core
+namespace MCM.Core.Utils
 {
 	public static class Logger
 	{
-	    static readonly TextWriter tw;
+	    static TextWriter tw;
 
-		static string Path { get; private set; }
+		public static string Path { get; private set; }
 
-	    static void CreateLogger(string Path)
+	    public static void CreateLogger(string Path)
 	    {
 			Logger.Path = Path;
 	        tw = TextWriter.Synchronized(File.AppendText(Path));
 	    }
 
-	    public static void Write(string logMessage)
-	    {
-	        try
-	        {
-	            Log(logMessage, tw);
-	        }
-	        catch (IOException e)
-	        {
-	            tw.Close();
-	        }
+	    public static void Write (string logMessage)
+		{
+			if (tw != null) {
+				try {
+					Log (logMessage, tw);
+				} catch (IOException) {
+					tw.Close ();
+				}
+			} else {
+				throw new NullReferenceException ("Logger not initiated!");
+			}
 	    }
 
 	    private static readonly object _syncObject = new object();

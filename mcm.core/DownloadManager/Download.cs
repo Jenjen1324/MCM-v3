@@ -92,7 +92,7 @@ namespace MCM.Core.DownloadManager
 		/// <summary>
 		/// Fires when download complete.
 		/// </summary>
-		public Action<DownloadJob> DownloadComplete;
+		public Action<DownloadJob,byte[]> DownloadComplete;
 
 		/// <summary>
 		/// Fires when progress changes.
@@ -134,11 +134,18 @@ namespace MCM.Core.DownloadManager
 				ProgressChanged(this, e.ProgressPercentage);
 			};
 			webClient.DownloadDataCompleted += (sender, e) => {
-				this.Working = false;
-				this.Success = true;
-				this.Complete = true;
-				DownloadComplete(this);
-				Logger.Write("Download Complete: {0} ({1})".format(this.Name,this.Description));
+				if(e.Error != null)
+				{
+					Logger.Write("Could not download: {0} ({1})\n{2}".format(this.Name,this.Description,e.Error.ToString()));
+				}
+				if(e.Result != null) {
+					this.Working = false;
+					this.Success = true;
+					this.Complete = true;
+					this.Data = e.Result;
+					DownloadComplete(this,this.Data);
+					Logger.Write("Download Complete: {0} ({1})".format(this.Name,this.Description));
+				}
 			};
 			try {
 				webClient.DownloadDataAsync (new Uri (this.Url));
@@ -156,13 +163,10 @@ namespace MCM.Core.DownloadManager
 		/// <returns>
 		/// The minecraft.
 		/// </returns>
-		public Func<bool> GetWaitForCompleteDelegate ()
+		public Action GetWaitForCompleteDelegate ()
 		{
 			this.RequiredForMinecraft = true;
-			return delegate {
-				WaitForComplete();
-				return true;
-			};
+			return WaitForComplete;
 		}
 
 		/// <summary>

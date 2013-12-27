@@ -36,7 +36,7 @@ namespace MCM.Core.DownloadManager
         /// <param name="name">The name</param>
         /// <param name="url">The URL to download from</param>
         /// <param name="MCRequire">Wheter Minecraft requires this before starting</param>
-		public static void ScheduleDownload(string Name, string Url, string Description, Action<DownloadJob> finished = null)
+		public static DownloadJob ScheduleDownload(string Name, string Url, string Description, Action<DownloadJob,byte[]> finished = null)
         {
 			DownloadJob dl = new DownloadJob(Url,Name,Description);
 			if(finished == null) dl.DownloadComplete += finished;
@@ -53,7 +53,7 @@ namespace MCM.Core.DownloadManager
 			lock (downloads) {
 				DownloadJob next = downloads.Pop ();
 				next.DownloadComplete += JobComplete;
-				next.DownloadComplete += (d) => {
+				next.DownloadComplete += (d,r) => {
 					lock (downloading) {
 						downloading.Remove(d);
 					}
@@ -66,11 +66,11 @@ namespace MCM.Core.DownloadManager
 			}
 		}
 
-		public static Func<bool> WaitForAll = delegate {};
+		public static Action WaitForAll = delegate { };
 
 		public static Action<DownloadJob> DownloadStarted = delegate {};
 
-		public static Action<DownloadJob> JobComplete = delegate {};
+		public static Action<DownloadJob,byte[]> JobComplete = delegate {};
 
 		public static Action<DownloadJob,int> DownloadProgressChanged = delegate {};
 

@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using MCM.Core.Utils;
 
 namespace MCM.Core.Settings
 {
 	/// <summary>
 	/// Contains all settings
 	/// </summary>
-	public class Settings : List<SettingGroup> 
+	public class Settings : List<SettingGroup>
 	{
+
 		public Settings () : base()
 		{
+
 		}
 
 		/// <summary>
@@ -39,8 +42,12 @@ namespace MCM.Core.Settings
 		/// </param>
 		public SettingGroup CreateGroup (string Name)
 		{
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine("Creating group: {0}".format(Name));
 			//if the group exists, return it
 			if (this.Exists ((i) => i.Name == Name)) {
+				sb.AppendLine("Group allready in settings, returning default");
+				Logger.Write(sb.ToString());
 				return this [Name];
 			} 
 			//Else create one and add it
@@ -48,6 +55,8 @@ namespace MCM.Core.Settings
 				//Create group
 				SettingGroup s = new SettingGroup(Name);
 				this.Add(s);
+				sb.AppendLine("Created group {0} and added to settings".format(Name));
+				Logger.Write(sb.ToString());
 				return s;
 			}
 		}
@@ -61,6 +70,7 @@ namespace MCM.Core.Settings
 		public void RemoveGroup (string Name)
 		{
 			this.RemoveAll((ii) => ii.Name == Name);
+			Logger.Write("Removed group {0}".format(Name));
 		}
 
 		/// <summary>
@@ -88,6 +98,7 @@ namespace MCM.Core.Settings
 			xmlBuilder.AppendLine("<settings>");
 			this.ForEach((g) => g.GenerateXML(xmlBuilder));
 			xmlBuilder.AppendLine("</settings>");
+			Logger.Write("Saved settings to xml");
 		}
 
 		/// <summary>
@@ -114,14 +125,17 @@ namespace MCM.Core.Settings
 					currentgroup = settings.CreateGroup(gname);
 				}
 				else if (xmlReader.Name == "setting" && xmlReader.NodeType == XmlNodeType.Element) {
-					string sname = xmlReader.GetAttribute("key") as string;
+					string sname = xmlReader.GetAttribute("name") as string;
 					currentsetting = currentgroup.CreateSetting(sname);
 					string type = xmlReader.GetAttribute("type") as string;
 					xmlReader.Read();
-					object value = xmlReader.ReadContentAs(Type.GetType(type), null);
+					string strval = xmlReader.ReadContentAsString();
+					object value = Convert.ChangeType(strval, Type.GetType(type));
 					currentsetting.Value = value;
 				}
 			}
+
+			Logger.Write("Loaded settings from xml");
 
 			//return the settings
 			return settings;

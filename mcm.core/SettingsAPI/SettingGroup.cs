@@ -39,6 +39,7 @@ namespace MCM.Core.Settings
 				//default value null
 				s.Value = null;
 				this.Add(s);
+				Logger.Write("Created setting {0} in group {1}".format(Key,this.name));
 				return s;
 			}
 		}

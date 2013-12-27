@@ -42,6 +42,7 @@
     <Compile Include="SettingsAPI\Settings.cs" />
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="Utils\Logger.cs" />
+    <Compile Include="LoginAPI\LoginManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

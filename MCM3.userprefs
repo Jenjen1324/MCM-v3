@@ -1,31 +1,43 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="mcm.mc/MinecraftVersion/MinecraftVersion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="mcm.core/SettingsAPI/Settings.cs">
     <Files>
-      <File FileName="mcm.core/Login API/LoginInfo.cs" Line="9" Column="4" />
-      <File FileName="mcm.core/Login API/EncryptedPassword.cs" Line="47" Column="43" />
-      <File FileName="mcm.core/Login API/EncryptKey.cs" Line="77" Column="43" />
-      <File FileName="mcm.mc/MinecraftAssets/MinecraftAssetManager.cs" Line="6" Column="32" />
-      <File FileName="mcm.core/DownloadManager/Download.cs" Line="14" Column="28" />
-      <File FileName="mcm.mc/MinecraftSession/SessionInfo.cs" Line="30" Column="73" />
-      <File FileName="mcm.mc/MinecraftSession/SessionInfoYggdrasil.cs" Line="31" Column="82" />
+      <File FileName="mcm.mc/MinecraftAssets/MinecraftAssetManager.cs" Line="41" Column="56" />
+      <File FileName="mcm.core/DownloadManager/Download.cs" Line="109" Column="3" />
+      <File FileName="mcm.mc/MinecraftSession/SessionInfo.cs" Line="30" Column="70" />
+      <File FileName="mcm.mc/MinecraftSession/SessionInfoYggdrasil.cs" Line="31" Column="80" />
       <File FileName="mcm.mc/MinecraftVersion/MinecraftVersion.cs" Line="18" Column="3" />
+      <File FileName="mcm.core/DownloadManager/DownloadManager.cs" Line="66" Column="5" />
+      <File FileName="testing/main.cs" Line="17" Column="4" />
+      <File FileName="mcm.core/Utils/Logger.cs" Line="28" Column="5" />
+      <File FileName="mcm.core/DownloadManager/DownloadPackage.cs" Line="17" Column="34" />
+      <File FileName="mcm.mc/MinecraftAssets/MinecraftAsset.cs" Line="47" Column="10" />
+      <File FileName="mcm.core/LoginAPI/EncryptKey.cs" Line="35" Column="1" />
+      <File FileName="mcm.core/LoginAPI/LoginInfo.cs" Line="66" Column="15" />
+      <File FileName="mcm.core/LoginAPI/EncryptedPassword.cs" Line="23" Column="14" />
+      <File FileName="mcm.core/LoginAPI/LoginManager.cs" Line="40" Column="26" />
+      <File FileName="mcm.core/SettingsAPI/Setting.cs" Line="1" Column="1" />
+      <File FileName="mcm.core/SettingsAPI/SettingGroup.cs" Line="44" Column="4" />
+      <File FileName="mcm.core/SettingsAPI/Settings.cs" Line="54" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="mcm.core" expanded="True">
             <Node name="DownloadManager" expanded="True" />
-            <Node name="Login API" expanded="True" />
+            <Node name="LoginAPI" expanded="True" />
+            <Node name="SettingsAPI" expanded="True">
+              <Node name="Settings.cs" selected="True" />
+            </Node>
+            <Node name="Utils" expanded="True" />
           </Node>
           <Node name="mcm.mc" expanded="True">
             <Node name="MinecraftAssets" expanded="True" />
             <Node name="MinecraftSession" expanded="True" />
-            <Node name="MinecraftVersion" expanded="True">
-              <Node name="MinecraftVersion.cs" selected="True" />
-            </Node>
+            <Node name="MinecraftVersion" expanded="True" />
           </Node>
           <Node name="mcm.news" expanded="True" />
+          <Node name="testing" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

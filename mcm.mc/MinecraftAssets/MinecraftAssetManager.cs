@@ -38,7 +38,7 @@ namespace MCM.MC.MinecraftAssets
         /// Gets called when an Asset has finished downloading
         /// </summary>
         /// <param name="dl">The download that has finished</param>
-        private static void AssetDownloaded(Download dl)
+        private static void AssetDownloaded(DownloadJob dl)
         {
             throw new NotImplementedException();
         }

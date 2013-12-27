@@ -10,7 +10,7 @@ namespace MCM.Core.Settings
 	public class Setting
 	{
 		string key;
-		object value;
+		object _value;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MCM.Core.Settings.Setting"/> class.
@@ -21,6 +21,7 @@ namespace MCM.Core.Settings
 		public Setting (string Key)
 		{
 			this.key = Key;
+			this._value = null;
 		}
 
 		/// <summary>
@@ -40,8 +41,11 @@ namespace MCM.Core.Settings
 		/// The value.
 		/// </value>
 		public object Value {
-			get { return value; }
-			set { this.value = value; }
+			get { return _value; }
+			set {
+				this._value = value; 
+				Logger.Write("Set setting {0} to {1}".format(key,(value != null ? value.ToString() : "null")));
+			}
 		}
 
 		/// <summary>
@@ -52,7 +56,7 @@ namespace MCM.Core.Settings
 		/// </param>
 		public void GenerateXML(StringBuilder xmlBuilder)
 		{
-			xmlBuilder.AppendLine("<setting name=\"{0}\" type=\"{2}\">{1}</setting>".format(this.key,this.value.ToString(),this.value.GetType().FullName));
+			xmlBuilder.AppendLine("<setting name=\"{0}\" type=\"{2}\">{1}</setting>".format(this.key,this._value.ToString(),this._value.GetType().FullName));
 		}
 
 	}

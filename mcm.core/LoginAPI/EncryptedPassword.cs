@@ -13,8 +13,18 @@ namespace MCM.Core.LoginAPI
 		private byte[] passwordData;
 		private EncryptKey key;
 
-		public EncryptedPassword ()
+		private EncryptedPassword ()
 		{
+		}
+
+		public EncryptedPassword (byte[] data, EncryptKey Key)
+		{
+			passwordData = data;
+			key = Key;
+		}
+		public byte[] EncryptedPasswordData
+		{
+			get { return passwordData; }
 		}
 
 		/// <summary>
