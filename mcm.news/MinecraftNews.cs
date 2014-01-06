@@ -9,7 +9,7 @@ namespace MCM.News
     /// <summary>
     /// Fetches the Minecraft Launcher news
     /// </summary>
-    class MinecraftNews
+    class MinecraftNews : NewsFeed
     {
     }
 }

@@ -10,7 +10,7 @@ namespace MCM.MC.MinecraftVersion
     /// <summary>
     /// A specific Minecraft Version
     /// </summary>
-    public class MinecraftVersion
+    public class MinecraftVersion : TinyMinecraftVersion
     {
         /// <summary>
         /// The format of the arguments

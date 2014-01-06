@@ -30,6 +30,7 @@ namespace testing
 			FileStream xmlfs = new FileStream("/home/andreas/testingmcm/settings.xml",FileMode.Open);
 			XmlReader xmlr = XmlReader.Create(xmlfs);
 			Settings settings = Settings.LoadFromXML(xmlr);
+			xmlr.Close();
 			foreach (SettingGroup group in settings) {
 				Console.WriteLine("{0}:".format(group.Name));
 				foreach (var setting in group) {

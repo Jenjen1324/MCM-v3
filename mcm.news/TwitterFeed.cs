@@ -9,7 +9,7 @@ namespace MCM.News
     /// <summary>
     /// Fetches the Twitter feed from 
     /// </summary>
-    class TwitterFeed
+    class TwitterFeed : NewsFeed
     {
     }
 }

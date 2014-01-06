@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MCM.Core.Utils;
 
 namespace MCM.MC.MinecraftVersion
 {
@@ -62,7 +63,7 @@ namespace MCM.MC.MinecraftVersion
         /// <returns>A short description about the version</returns>
         public override string ToString()
         {
-            return base.ToString();
+			return "{0} {1}".format(key,type.ToString);
         }
     }
 }

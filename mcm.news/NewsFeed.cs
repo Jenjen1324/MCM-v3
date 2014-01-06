@@ -9,8 +9,8 @@ namespace MCM.News
     /// <summary>
     /// Standartises the news
     /// </summary>
-    public interface News
+    public interface NewsFeed
     {
-        
+		List<FeedItem> Items { get; }
     }
 }

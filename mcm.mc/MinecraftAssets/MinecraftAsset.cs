@@ -42,7 +42,7 @@ namespace MCM.MC.MinecraftAssets
         /// <summary>
         /// Stores the Downloaded data to the Asset
         /// </summary>
-        /// <param name="d">The Download where the Asset was downloaded with</param>
+        /// <param name="d">The Download that the Asset was downloaded with</param>
         public void StoreAsset(DownloadJob d)
         {
             throw new NotImplementedException();

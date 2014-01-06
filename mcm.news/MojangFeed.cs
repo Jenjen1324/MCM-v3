@@ -9,7 +9,7 @@ namespace MCM.News
     /// <summary>
     /// Fetches news from the mojang.com website
     /// </summary>
-    public class MojangFeed : News
+    public class MojangFeed : NewsFeed
     {
     }
 }
