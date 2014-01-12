@@ -9,7 +9,7 @@ namespace MCM.News
 	/// <summary>
 	/// Standartises the news
 	/// </summary>
-	class FeedItem
+	public class FeedItem
 	{
 		public string title;
 		public DateTime time;

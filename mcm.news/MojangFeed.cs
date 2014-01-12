@@ -11,5 +11,12 @@ namespace MCM.News
     /// </summary>
     public class MojangFeed : NewsFeed
     {
+		#region NewsFeed implementation
+		public List<FeedItem> Items {
+			get {
+				throw new System.NotImplementedException ();
+			}
+		}
+		#endregion
     }
 }

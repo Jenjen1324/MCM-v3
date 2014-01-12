@@ -46,10 +46,10 @@
     <Compile Include="MinecraftSession\SessionInfo.cs" />
     <Compile Include="MinecraftSession\SessionInfoYggdrasil.cs" />
     <Compile Include="MinecraftStatus.cs" />
-    <Compile Include="MinecraftVersion\MinecraftVersion.cs" />
-    <Compile Include="MinecraftVersion\ProcessArguments.cs" />
-    <Compile Include="MinecraftVersion\ReleaseType.cs" />
-    <Compile Include="MinecraftVersion\TinyMinecraftVersion.cs" />
+    <Compile Include="Version\MinecraftVersion.cs" />
+    <Compile Include="Version\ProcessArguments.cs" />
+    <Compile Include="Version\ReleaseType.cs" />
+    <Compile Include="Version\TinyMinecraftVersion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

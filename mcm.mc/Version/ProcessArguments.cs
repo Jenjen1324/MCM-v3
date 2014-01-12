@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MCM.MC.MinecraftVersion
+namespace MCM.MC.Version
 {
     /// <summary>
     /// The method of how you use the userdata to launch the minecraft version

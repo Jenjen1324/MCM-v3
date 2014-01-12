@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using MCM.Core.Utils;
 
-namespace MCM.Core.Settings
+namespace MCM.Core.SettingsAPI
 {
 	/// <summary>
 	/// Setting.

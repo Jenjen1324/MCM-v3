@@ -5,7 +5,7 @@ using MCM.Core.Utils;
 using System.IO;
 using MCM.Core;
 using MCM.Core.LoginAPI;
-using MCM.Core.Settings;
+using MCM.Core.SettingsAPI;
 using System.Text;
 using System.Xml;
 
@@ -15,7 +15,7 @@ namespace testing
 	{
 		public static void Main ()
 		{
-			Logger.CreateLogger("/home/andreas/testingmcm/mcmlog.log");
+			Logger.CreateLogger("/home/andreas/mcmlog.log");
 
 			/*
 			Settings settings = new Settings();
@@ -27,11 +27,7 @@ namespace testing
 			File.WriteAllText("/home/andreas/testingmcm/settins.xml",xml.ToString());
 			*/
 
-			FileStream xmlfs = new FileStream("/home/andreas/testingmcm/settings.xml",FileMode.Open);
-			XmlReader xmlr = XmlReader.Create(xmlfs);
-			Settings settings = Settings.LoadFromXML(xmlr);
-			xmlr.Close();
-			foreach (SettingGroup group in settings) {
+			foreach (SettingGroup group in Settings.GetList()) {
 				Console.WriteLine("{0}:".format(group.Name));
 				foreach (var setting in group) {
 					Console.WriteLine("- {0} : {1} - {2}".format(setting.Key,setting.Value.ToString(),setting.Value.GetType().FullName));
@@ -39,7 +35,7 @@ namespace testing
 			}
 			Console.ReadKey();
 
-			LoginManager.SaveToFolder("/home/andreas/testingmcm");
+			LoginManager.SaveToFolder("/home/andreas/");
 		}
 	}
 }

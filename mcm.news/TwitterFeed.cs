@@ -11,5 +11,12 @@ namespace MCM.News
     /// </summary>
     class TwitterFeed : NewsFeed
     {
+		#region NewsFeed implementation
+		public List<FeedItem> Items {
+			get {
+				throw new System.NotImplementedException ();
+			}
+		}
+		#endregion
     }
 }

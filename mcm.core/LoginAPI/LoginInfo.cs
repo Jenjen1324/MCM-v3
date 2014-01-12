@@ -10,7 +10,6 @@ namespace MCM.Core.LoginAPI
 	{ 
 		private string name;
 		private EncryptedPassword password;
-		private EncryptKey key;
 
 		private LoginInfo ()
 		{

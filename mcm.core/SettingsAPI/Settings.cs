@@ -4,17 +4,18 @@ using System.Text;
 using System.Xml;
 using MCM.Core.Utils;
 
-namespace MCM.Core.Settings
+namespace MCM.Core.SettingsAPI
 {
 	/// <summary>
 	/// Contains all settings
 	/// </summary>
-	public class Settings : List<SettingGroup>
+	public static class Settings
 	{
+		static List<SettingGroup> list;
 
-		public Settings () : base()
+		static Settings ()
 		{
-
+			list = new List<SettingGroup>();
 		}
 
 		/// <summary>
@@ -26,9 +27,9 @@ namespace MCM.Core.Settings
 		/// <param name='name'>
 		/// The Group Name.
 		/// </param>
-		public SettingGroup GetGroup(string name)
+		public static SettingGroup GetGroup(string name)
 		{
-			return this.Find((i) => i.Name == name);
+			return list.Find((i) => i.Name == name);
 		}
 
 		/// <summary>
@@ -40,21 +41,21 @@ namespace MCM.Core.Settings
 		/// <param name='Name'>
 		/// Name of the group.
 		/// </param>
-		public SettingGroup CreateGroup (string Name)
+		public static SettingGroup CreateGroup (string Name)
 		{
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("Creating group: {0}".format(Name));
 			//if the group exists, return it
-			if (this.Exists ((i) => i.Name == Name)) {
+			if (list.Exists ((i) => i.Name == Name)) {
 				sb.AppendLine("Group allready in settings, returning default");
 				Logger.Write(sb.ToString());
-				return this [Name];
+				return GetGroup(Name);
 			} 
 			//Else create one and add it
 			else {
 				//Create group
 				SettingGroup s = new SettingGroup(Name);
-				this.Add(s);
+				list.Add(s);
 				sb.AppendLine("Created group {0} and added to settings".format(Name));
 				Logger.Write(sb.ToString());
 				return s;
@@ -67,24 +68,10 @@ namespace MCM.Core.Settings
 		/// <param name='Name'>
 		/// Name of the group to remove.
 		/// </param>
-		public void RemoveGroup (string Name)
+		public static void RemoveGroup (string Name)
 		{
-			this.RemoveAll((ii) => ii.Name == Name);
+			list.RemoveAll((ii) => ii.Name == Name);
 			Logger.Write("Removed group {0}".format(Name));
-		}
-
-		/// <summary>
-		/// Gets the <see cref="MCM.Core.Settings.SettingGroup"/> with the specified GroupName.
-		/// </summary>
-		/// <param name='GroupName'>
-		/// Group name.
-		/// </param>
-		public SettingGroup this[string GroupName]
-		{
-			get
-			{
-				return GetGroup(GroupName);
-			}
 		}
 
 		/// <summary>
@@ -93,10 +80,10 @@ namespace MCM.Core.Settings
 		/// <param name='xmlBuilder'>
 		/// Xml builder.
 		/// </param>
-		public void GenerateXML (StringBuilder xmlBuilder)
+		public static void GenerateXML (StringBuilder xmlBuilder)
 		{
 			xmlBuilder.AppendLine("<settings>");
-			this.ForEach((g) => g.GenerateXML(xmlBuilder));
+			list.ForEach((g) => g.GenerateXML(xmlBuilder));
 			xmlBuilder.AppendLine("</settings>");
 			Logger.Write("Saved settings to xml");
 		}
@@ -110,10 +97,7 @@ namespace MCM.Core.Settings
 		/// <param name='xmlReader'>
 		/// Xml reader with the xml.
 		/// </param>
-		public static Settings LoadFromXML(XmlReader xmlReader) {
-			//Create new settings
-			Settings settings = new Settings();
-
+		public static void LoadFromXML(XmlReader xmlReader) {
 			//Create tmp variables
 			SettingGroup currentgroup = null;
 			Setting currentsetting = null;
@@ -122,7 +106,7 @@ namespace MCM.Core.Settings
 			while (xmlReader.Read()) {
 				if (xmlReader.Name == "group" && xmlReader.NodeType == XmlNodeType.Element) {
 					string gname = xmlReader.GetAttribute("name") as string;
-					currentgroup = settings.CreateGroup(gname);
+					currentgroup = CreateGroup(gname);
 				}
 				else if (xmlReader.Name == "setting" && xmlReader.NodeType == XmlNodeType.Element) {
 					string sname = xmlReader.GetAttribute("name") as string;
@@ -136,9 +120,11 @@ namespace MCM.Core.Settings
 			}
 
 			Logger.Write("Loaded settings from xml");
+		}
 
-			//return the settings
-			return settings;
+		public static IEnumerable<SettingGroup> GetList ()
+		{
+			return list.AsReadOnly();
 		}
 	}
 }

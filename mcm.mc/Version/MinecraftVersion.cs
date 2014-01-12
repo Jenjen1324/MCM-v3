@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCM.MC.MinecraftVersion
+namespace MCM.MC.Version
 {
     /// <summary>
     /// A specific Minecraft Version
