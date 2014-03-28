@@ -28,7 +28,7 @@ namespace MCM.MC.MinecraftSession
         /// <param name="username">The username (or email) that is used to login</param>
         /// <param name="password">The password that is used to log in</param>
         /// <returns>Session info for Minecraft</returns>
-		public static SessionInfoYggdrasil Connect(string username, string uassword) 
+		new public static SessionInfoYggdrasil Connect(string username, string password) 
 		{
 			throw new NotImplementedException ();
 		}
