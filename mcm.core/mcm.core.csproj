@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6CCEAF72-37AA-4E13-BE72-133FE406B12B}</ProjectGuid>
+    <ProjectGuid>{0CD2C51E-A28A-48CB-9E6E-7F9D62DE0AEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MCM.Core</RootNamespace>
     <AssemblyName>mcm.core</AssemblyName>
@@ -30,10 +30,24 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="DownloadManager\Download.cs" />
     <Compile Include="DownloadManager\DownloadManager.cs" />
     <Compile Include="DownloadManager\DownloadPackage.cs" />
+    <Compile Include="LoginAPI\LoginInfo.cs" />
+    <Compile Include="LoginAPI\EncryptedPassword.cs" />
+    <Compile Include="LoginAPI\EncryptKey.cs" />
+    <Compile Include="SettingsAPI\Setting.cs" />
+    <Compile Include="SettingsAPI\SettingGroup.cs" />
+    <Compile Include="SettingsAPI\Settings.cs" />
+    <Compile Include="Utils\StringUtils.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="LoginAPI\LoginManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -41,13 +55,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Login API\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Login API\LoginInfo.cs" />
-    <Compile Include="Login API\EncryptedPassword.cs" />
-    <Compile Include="Login API\EncryptKey.cs" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

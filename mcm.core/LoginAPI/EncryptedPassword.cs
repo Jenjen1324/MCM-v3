@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Diagnostics.Contracts;
 
-namespace mcm.core
+namespace MCM.Core.LoginAPI
 {
 	/// <summary>
 	/// Encrypted password.
@@ -13,8 +13,18 @@ namespace mcm.core
 		private byte[] passwordData;
 		private EncryptKey key;
 
-		public EncryptedPassword ()
+		private EncryptedPassword ()
 		{
+		}
+
+		public EncryptedPassword (byte[] data, EncryptKey Key)
+		{
+			passwordData = data;
+			key = Key;
+		}
+		public byte[] EncryptedPasswordData
+		{
+			get { return passwordData; }
 		}
 
 		/// <summary>
@@ -77,7 +87,7 @@ namespace mcm.core
 
 				//Create crypto streams
 				using (MemoryStream ms = new MemoryStream(this.passwordData))
-				using (CryptoStream cryptoStream = new CryptoStream(ms, Aes, CryptoStreamMode.Read))
+				using (CryptoStream cryptoStream = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Read))
 				using (StreamReader cryptoReader = new StreamReader(cryptoStream)) {
 
 					//Read decrypted data
