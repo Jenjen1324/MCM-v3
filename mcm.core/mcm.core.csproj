@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6CCEAF72-37AA-4E13-BE72-133FE406B12B}</ProjectGuid>
+    <ProjectGuid>{0CD2C51E-A28A-48CB-9E6E-7F9D62DE0AEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MCM.Core</RootNamespace>
     <AssemblyName>mcm.core</AssemblyName>
@@ -30,6 +30,11 @@
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="DownloadManager\Download.cs" />
     <Compile Include="DownloadManager\DownloadManager.cs" />
@@ -53,9 +58,5 @@
     <Reference Include="System.Net" />
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LoginAPI\" />
-    <Folder Include="SettingsAPI\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3AA950AF-D2A6-45C0-B29C-959307957846}</ProjectGuid>
+    <ProjectGuid>{834ABC49-D1BF-4946-B119-465FEB183490}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MCM.MC</RootNamespace>
     <AssemblyName>mcm.mc</AssemblyName>
@@ -29,6 +29,11 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,7 +67,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\mcm.core\mcm.core.csproj">
-      <Project>{6CCEAF72-37AA-4E13-BE72-133FE406B12B}</Project>
+      <Project>{0CD2C51E-A28A-48CB-9E6E-7F9D62DE0AEE}</Project>
       <Name>mcm.core</Name>
     </ProjectReference>
   </ItemGroup>
